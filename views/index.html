@@ -1,267 +1,172 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
+    <title>BiteSync - Trang Chủ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StyleEra - Thời Trang Cho Mọi Người</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!--    <link rel="stylesheet" href="${root}/css/style.css">-->
-<!--    <link rel="stylesheet" href="${root}/css/header-footer.css">-->
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+
 </head>
-
 <body>
-<jsp:include page="/views/layout/header.jsp"/>
 
-<main class="main-content">
-    <section class="hero-section">
-        <div class="hero-slider">
-            <div class="hero-slide active">
-                <img src="${root}/images/slide/slide-01.jpg" alt="Fashion Banner 1">
+<header>
+    <div class="container nav-container">
+        <a href="/home" class="logo">
+            <i class="fa-solid fa-fire-flame-curved"></i> BiteSync
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#" class="active">Trang Chủ</a></li>
+            <li><a href="#">Thực Đơn</a></li>
+            <li><a href="#">Về Chúng Tôi</a></li>
+            <li><a href="#">Liên Hệ</a></li>
+            <li><a href="#">Khuyến mãi</a></li>
+        </ul>
+
+        <div class="nav-actions" style="display: flex; align-items: center; gap: 15px;">
+            <form action="/search" method="GET"
+                  style="position: relative; display: flex; align-items: center;">
+                <input type="text" name="keyword" id="searchInput"
+                       placeholder="Tìm món ăn..." autocomplete="off"
+                       style="padding: 8px 35px 8px 15px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: white; width: 220px; outline: none; transition: 0.3s;"
+                       onfocus="this.style.width='260px'; this.style.borderColor='var(--color-orange)';"
+                       onblur="if(this.value==='') this.style.width='220px'; this.style.borderColor='rgba(255,255,255,0.2)';">
+                <button type="submit"
+                        style="position: absolute; right: 10px; background: none; border: none; color: var(--text-muted); cursor: pointer;"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+
+                <ul id="suggestionBox"
+                    style="display: none; position: absolute; top: 110%; left: 0; right: 0; background: rgba(30, 30, 40, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; z-index: 1000; list-style: none; padding: 0; margin: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: left; overflow: hidden;">
+                </ul>
+            </form>
+
+            <button class="btn-icon" style="position: relative;" title="Giỏ hàng"
+                    onclick="window.location.href='/cart'">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span id="cart-badge-count"
+                      style="position: absolute; top: -4px; right: -4px; background: var(--color-orange); color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; font-weight: 700;">
+                        0
+                    </span>
+            </button>
+            <a href="#" class="btn-primary" id="loginBtn">Đăng Nhập</a>
+        </div>
+    </div>
+</header>
+
+<section id="home" class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-truck-fast"></i> Giao hàng siêu tốc trong 15 phút
             </div>
-            <div class="hero-slide">
-                <img src="${root}/images/slide/slide-02.jpg" alt="Fashion Banner 2">
+            <h1 class="hero-title">
+                Thưởng Thức Nhanh,<br>
+                Thỏa Cơn <span>Thèm Ăn!</span>
+            </h1>
+            <p class="hero-desc">
+                Trải nghiệm hương vị thức ăn nhanh cao cấp được chế biến từ nguyên liệu tươi ngon nhất trong ngày. Giao hàng nóng hổi tận cửa nhà bạn.
+            </p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn-primary">Đặt Ngay</a>
+                <a href="#menu" class="btn-secondary">Xem Thực Đơn</a>
             </div>
         </div>
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1>Định Nghĩa Phong Cách Của Bạn</h1>
-                <p>Khám phá bộ sưu tập thời trang hiện đại - Nơi phong cách gặp gỡ sự tự tin</p>
-                <div class="hero-buttons">
-                    <a href="#collections" class="btn-hero btn-hero-primary">Khám Phá Ngay</a>
-                    <a href="#new-arrivals" class="btn-hero btn-hero-secondary">Hàng Mới Về</a>
-                </div>
-            </div>
+
+        <div class="hero-image-wrapper">
+            <div class="hero-image-circle"></div>
+            <img class="hero-image" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Delicious Cheese Burger">
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="features-section">
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shipping-fast"></i>
-                </div>
-                <h3>Miễn Phí Vận Chuyển</h3>
-                <p>Giao hàng miễn phí cho đơn hàng trên 500.000đ</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-undo-alt"></i>
-                </div>
-                <h3>Đổi Trả Dễ Dàng</h3>
-                <p>Đổi trả trong vòng 30 ngày miễn phí</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Thanh Toán An Toàn</h3>
-                <p>Bảo mật thông tin với công nghệ mã hóa</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-headset"></i>
-                </div>
-                <h3>Hỗ Trợ 24/7</h3>
-                <p>Đội ngũ chăm sóc khách hàng luôn sẵn sàng</p>
-            </div>
-        </div>
-    </section>
+<section id="menu" class="menu-section">
+    <div class="container">
 
-    <section id="new-arrivals" class="products-section">
-        <div class="products-container">
-            <div class="section-header">
-                <h2>Hàng Mới Về</h2>
-                <p>Cập nhật những xu hướng thời trang mới nhất</p>
-            </div>
-            <div class="products-grid">
-                <%
-                List<Product> newArrivals = (List<Product>) request.getAttribute("newArrivals");
-                if (newArrivals != null) {
-                for (Product p : newArrivals) {
-                String imgPath = (p.getThumbnail() != null) ? request.getContextPath() + p.getThumbnail() : request.getContextPath() + "/images/no-image.png";
-                %>
-                <div class="product-card">
-                    <a href="${root}/product_detail?id=<%=p.getProduct_id()%>" class="product-card-link">
-                        <div class="product-image">
-                            <span class="product-badge badge-new">NEW</span>
-                            <img src="<%=imgPath%>" alt="<%=p.getProduct_name()%>" loading="lazy">
-                        </div>
-                    </a>
-
-                    <div class="product-details">
-                        <div class="product-info">
-                            <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" style="text-decoration: none;">
-                                <h4><%=p.getProduct_name()%></h4>
-                            </a>
-
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-
-                        <div class="product-bottom">
-                            <div class="product-price">
-                                <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
-                            </div>
-
-                            <button class="btn-cart" type="button" title="Thêm vào giỏ"
-                            <%= p.getDefaultVariantId() == null ? "disabled" : "" %>
-                            onclick="addToCart(<%= p.getDefaultVariantId() %>)">
-                            <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <% }
-                }
-                %>
-            </div>
-            <div class="section-footer">
-                <a href="${root}/product?sort=newest" class="btn-view-all">Xem Tất Cả</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="products-section bg-light">
-        <div class="products-container">
-            <div class="section-header">
-                <h2>Sản Phẩm Bán Chạy</h2>
-                <p>Những sản phẩm được yêu thích nhất</p>
-            </div>
-            <div class="products-grid">
-                <%
-                List<Product> bestSellers = (List<Product>) request.getAttribute("bestSellers");
-                if (bestSellers != null && !bestSellers.isEmpty()) {
-                for (Product p : bestSellers) {
-                String imgPath = (p.getThumbnail() != null)
-                ? request.getContextPath() + p.getThumbnail()
-                : request.getContextPath() + "/images/no-image.png";
-                %>
-                <div class="product-card">
-                    <a href="${root}/product_detail?id=<%=p.getProduct_id()%>" class="product-card-link">
-                        <div class="product-image">
-                            <span class="product-badge badge-bestseller">BEST SELLER</span>
-                            <img src="<%=imgPath%>" alt="<%=p.getProduct_name()%>" loading="lazy">
-                        </div>
-                    </a>
-
-                    <div class="product-details">
-                        <div class="product-info">
-                            <a href="${root}/Product_DetailController?id=<%=p.getProduct_id()%>" style="text-decoration: none;">
-                                <h4><%=p.getProduct_name()%></h4>
-                            </a>
-
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-
-                        <div class="product-bottom">
-                            <div class="product-price">
-                                <span class="price"><%=String.format("%,.0f", p.getPrice())%>₫</span>
-                            </div>
-
-                            <button class="btn-cart" type="button" title="Thêm vào giỏ"
-                            <%= p.getDefaultVariantId() == null ? "disabled" : "" %>
-                            onclick="addToCart(<%= p.getDefaultVariantId() %>)">
-                            <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <% }
-                } else {
-                %>
-                <p class="text-center">Đang cập nhật sản phẩm bán chạy...</p>
-                <% } %>
-            </div>
-            <div class="section-footer">
-                <a href="${root}/product?sort=bestseller" class="btn-view-all">Xem Tất Cả</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="collections" class="collections-section">
         <div class="section-header">
-            <h2>Bộ Sưu Tập Nổi Bật</h2>
-            <p>Khám phá các bộ sưu tập thời trang được yêu thích nhất</p>
+            <h2 class="section-title">Thực Đơn <span>Đặc Sắc</span></h2>
+            <p class="section-subtitle">Lựa chọn các món ăn ngon nhất được chế biến bởi những đầu bếp chuyên nghiệp của chúng tôi.</p>
         </div>
-        <div class="collections-grid">
-            <div class="collection-card">
-                <img src="${root}/images/category-banner/banner/male-fashion.jpg" alt="Thời trang nam">
-                <div class="collection-overlay">
-                    <h3>Thời Trang Nam</h3>
-                    <p>Phong cách lịch lãm - Năng động - Cá tính</p>
-                    <a href="${root}/product?parentId=1" class="collection-link">
-                        Khám Phá <i class="fas fa-arrow-right"></i>
-                    </a>
+
+        <div class="menu-grid" id="menu-grid">
+            <div class="food-card" data-category="Burgers">
+                <div class="card-img-wrapper" style="cursor: pointer;" onclick="window.location.href='/detail?id=1'">
+                    <span class="card-badge">Burgers</span>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80" alt="Cheese Burger">
+                    <div class="card-overlay"></div>
                 </div>
-            </div>
-
-            <div class="collection-card">
-                <img src="${root}/images/category-banner/banner/female-fashion.jpg" alt="Thời trang nữ">
-                <div class="collection-overlay">
-                    <h3>Thời Trang Nữ</h3>
-                    <p>Thanh lịch - Tinh tế - Quyến rũ</p>
-                    <a href="${root}/product?parentId=2" class="collection-link">
-                        Khám Phá <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="categories-section">
-        <div class="categories-container">
-
-            <c:if test="${not empty parents}">
-                <c:forEach items="${parents}" var="p">
-                    <div class="category-group">
-                        <div class="category-group-header">
-                            <div class="category-icon ${p.id == 1 ? 'male' : (p.id == 2 ? 'female' : 'couple')}">
-                                <i class="fas ${p.id == 1 ? 'fa-mars' : (p.id == 2 ? 'fa-venus' : 'fa-heart')}"></i>
-                            </div>
-                            <h2>Thời Trang ${p.name}</h2>
-                        </div>
-
-                        <div class="category-items-grid">
-                            <c:if test="${not empty p.subCategories}">
-                                <c:forEach items="${p.subCategories}" var="sub">
-                                    <c:set var="categoryImg" value="${not empty sub.image ? sub.image : '/images/no-image.png'}"/>
-                                    <a href="${root}/product?cateId=${sub.id}" class="category-item-card">
-                                        <div class="category-item-image">
-                                            <img src="${root}${categoryImg}"
-                                                 alt="${sub.name}" loading="lazy">
-                                        </div>
-                                        <div class="category-item-content">
-                                            <h4>${sub.name}</h4>
-                                            <p>${sub.description}</p>
-                                        </div>
-                                    </a>
-                                </c:forEach>
-                            </c:if>
-                            <c:if test="${empty p.subCategories}">
-                                <p class="text-center">Đang cập nhật danh mục...</p>
-                            </c:if>
-                        </div>
+                <div class="card-body">
+                    <h3 class="card-title" style="cursor: pointer;" onclick="window.location.href='/detail?id=1'">Cheese Burger</h3>
+                    <p class="card-desc">Bò bằm tươi, phô mai cheddar, rau xà lách và sốt đặc biệt.</p>
+                    <div class="card-footer">
+                        <div class="price-tag"><span>$</span>5.99</div>
+                        <form action="#" method="POST" style="margin: 0;" onsubmit="ajaxAddToCart(event, this)">
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="productId" value="1">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn-card-order" title="Thêm vào giỏ hàng">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </form>
                     </div>
-                </c:forEach>
-            </c:if>
-            <c:if test="${empty parents}">
-                <p class="text-center">Đang cập nhật danh mục sản phẩm...</p>
-            </c:if>
-
+                </div>
+            </div>
         </div>
-    </section>
-</main>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col footer-about">
+                <a href="/home" class="logo">
+                    <i class="fa-solid fa-fire-flame-curved"></i> BiteSync
+                </a>
+                <p class="footer-desc">
+                    Hệ thống cung cấp thức ăn nhanh hàng đầu Việt Nam, mang bữa ăn chất lượng nhất, nóng hổi
+                    nhất đến cho bạn mọi lúc mọi nơi.
+                </p>
+                <div class="social-links">
+                    <button class="btn-icon"><i class="fa-brands fa-facebook-f"></i></button>
+                    <button class="btn-icon"><i class="fa-brands fa-instagram"></i></button>
+                    <button class="btn-icon"><i class="fa-brands fa-tiktok"></i></button>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Liên Kết Nhanh</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Trang Chủ</a></li>
+                    <li><a href="/search">Thực Đơn</a></li>
+                    <li><a href="#about">Về Chúng Tôi</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
+                    <li><a href="#promotion">Khuyến mãi</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Hỗ Trợ Khách Hàng</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Điều Khoản Dịch Vụ</a></li>
+                    <li><a href="#">Chính Sách Bảo Mật</a></li>
+                    <li><a href="#">Chính Sách Vận Chuyển</a></li>
+                    <li><a href="#">Phản Hồi & Đóng Góp</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2026 BiteSync. Tất cả các quyền được bảo lưu.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Chính sách bảo mật</a>
+                <a href="#">Điều khoản sử dụng</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
 </body>
 </html>
