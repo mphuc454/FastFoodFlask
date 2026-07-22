@@ -1,60 +1,8 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>BiteSync - Trang Chủ</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/styles.css">
+{% extends "/layout/template.html" %}
 
-</head>
-<body>
 
-<header>
-    <div class="container nav-container">
-        <a href="/home" class="logo">
-            <i class="fa-solid fa-fire-flame-curved"></i> BiteSync
-        </a>
-
-        <ul class="nav-links">
-            <li><a href="#" class="active">Trang Chủ</a></li>
-            <li><a href="#">Thực Đơn</a></li>
-            <li><a href="#">Về Chúng Tôi</a></li>
-            <li><a href="#">Liên Hệ</a></li>
-            <li><a href="#">Khuyến mãi</a></li>
-        </ul>
-
-        <div class="nav-actions" style="display: flex; align-items: center; gap: 15px;">
-            <form action="/search" method="GET"
-                  style="position: relative; display: flex; align-items: center;">
-                <input type="text" name="keyword" id="searchInput"
-                       placeholder="Tìm món ăn..." autocomplete="off"
-                       style="padding: 8px 35px 8px 15px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: white; width: 220px; outline: none; transition: 0.3s;"
-                       onfocus="this.style.width='260px'; this.style.borderColor='var(--color-orange)';"
-                       onblur="if(this.value==='') this.style.width='220px'; this.style.borderColor='rgba(255,255,255,0.2)';">
-                <button type="submit"
-                        style="position: absolute; right: 10px; background: none; border: none; color: var(--text-muted); cursor: pointer;"><i
-                        class="fa-solid fa-magnifying-glass"></i></button>
-
-                <ul id="suggestionBox"
-                    style="display: none; position: absolute; top: 110%; left: 0; right: 0; background: rgba(30, 30, 40, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; z-index: 1000; list-style: none; padding: 0; margin: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: left; overflow: hidden;">
-                </ul>
-            </form>
-
-            <button class="btn-icon" style="position: relative;" title="Giỏ hàng"
-                    onclick="window.location.href='/cart'">
-                <i class="fa-solid fa-basket-shopping"></i>
-                <span id="cart-badge-count"
-                      style="position: absolute; top: -4px; right: -4px; background: var(--color-orange); color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; font-weight: 700;">
-                        0
-                    </span>
-            </button>
-            <a href="#" class="btn-primary" id="loginBtn">Đăng Nhập</a>
-        </div>
-    </div>
-</header>
-
+{% block title %} BiteSync - Trang chủ {% endblock %}
+ {% block content %}
 <section id="home" class="hero">
     <div class="container hero-grid">
         <div class="hero-content">
@@ -115,58 +63,8 @@
         </div>
     </div>
 </section>
-
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col footer-about">
-                <a href="/home" class="logo">
-                    <i class="fa-solid fa-fire-flame-curved"></i> BiteSync
-                </a>
-                <p class="footer-desc">
-                    Hệ thống cung cấp thức ăn nhanh hàng đầu Việt Nam, mang bữa ăn chất lượng nhất, nóng hổi
-                    nhất đến cho bạn mọi lúc mọi nơi.
-                </p>
-                <div class="social-links">
-                    <button class="btn-icon"><i class="fa-brands fa-facebook-f"></i></button>
-                    <button class="btn-icon"><i class="fa-brands fa-instagram"></i></button>
-                    <button class="btn-icon"><i class="fa-brands fa-tiktok"></i></button>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h4>Liên Kết Nhanh</h4>
-                <ul class="footer-links">
-                    <li><a href="#home">Trang Chủ</a></li>
-                    <li><a href="/search">Thực Đơn</a></li>
-                    <li><a href="#about">Về Chúng Tôi</a></li>
-                    <li><a href="#contact">Liên Hệ</a></li>
-                    <li><a href="#promotion">Khuyến mãi</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Hỗ Trợ Khách Hàng</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Điều Khoản Dịch Vụ</a></li>
-                    <li><a href="#">Chính Sách Bảo Mật</a></li>
-                    <li><a href="#">Chính Sách Vận Chuyển</a></li>
-                    <li><a href="#">Phản Hồi & Đóng Góp</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p class="footer-copy">&copy; 2026 BiteSync. Tất cả các quyền được bảo lưu.</p>
-            <div class="footer-bottom-links">
-                <a href="#">Chính sách bảo mật</a>
-                <a href="#">Điều khoản sử dụng</a>
-            </div>
-        </div>
-    </div>
-</footer>
+{% endblock %}
 
 
 
-</body>
-</html>
+
