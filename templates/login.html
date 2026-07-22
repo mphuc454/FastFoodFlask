@@ -1,0 +1,84 @@
+{% extends "/layout/template.html" %}
+
+{% block title %} BiteSync | Đăng Nhập {% endblock %}
+
+{% block content %}
+<a href="/home" class="back-home">
+    <i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ
+</a>
+<div class="auth-container">
+    <!-- Background blurs -->
+    <div class="hero-image-circle" style="top: 20%; left: 30%; width: 300px; height: 300px;"></div>
+    <div class="hero-image-circle"
+        style="bottom: 10%; right: 25%; width: 350px; height: 350px; background: var(--gradient-accent);">
+    </div>
+
+    <div class="auth-card">
+        <div class="auth-header">
+            <a href="/home" class="logo">
+                <i class="fa-solid fa-fire-flame-curved"></i> BiteSync
+            </a>
+            <h2>Chào mừng bạn trở lại!</h2>
+        </div>
+
+        <!-- Thông báo lỗi (hiển thị khi có lỗi đăng nhập) -->
+        <div class="alert-error" style="color: var(--color-red); text-align: center; margin-bottom: 16px; font-weight: 500; font-size: 0.9rem; display: none;">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span class="error-text"></span>
+        </div>
+
+        <!-- Thông báo thành công (hiển thị khi đăng ký/đổi mật khẩu thành công) -->
+        <div class="alert-success" style="color: #2ecc71; text-align: center; margin-bottom: 16px; font-weight: 500; font-size: 0.9rem; display: none;">
+            <i class="fa-solid fa-circle-check"></i>
+            <span class="success-text"></span>
+        </div>
+
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username">Tên đăng nhập / Email</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="username" name="username" class="form-input"
+                        placeholder="Nhập tài khoản của bạn" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" name="password" class="form-input"
+                        placeholder="Nhập mật khẩu" required>
+                </div>
+            </div>
+
+            <div class="auth-options">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="remember"> Nhớ mật khẩu
+                </label>
+                <a href="/forgot-password" class="forgot-link">Quên mật khẩu?</a>
+            </div>
+
+            <button type="submit" class="btn-primary btn-auth">Đăng Nhập</button>
+
+            <div style="text-align: center; margin: 15px 0; color: var(--text-secondary); font-size: 0.9rem;">
+                <span>HOẶC</span>
+            </div>
+
+            <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8080/Web_Ban_Do_An_Nhanh/login-google&response_type=code&client_id=797549044266-n1h5cl113p3s5pjgm9krg4e1343o16lc.apps.googleusercontent.com"
+                class="btn-secondary"
+                style="display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.95rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); color: var(--text-primary); transition: var(--transition-fast);"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                    alt="Google Logo" style="width: 18px; height: 18px;">
+                Đăng nhập bằng Google
+            </a>
+        </form>
+
+        <div class="auth-footer">
+            Chưa có tài khoản? <a href="/pages/register.jsp">Đăng ký ngay</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
